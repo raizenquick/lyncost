@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS goals (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  target_amount REAL NOT NULL,
+  current_amount REAL NOT NULL DEFAULT 0,
+  target_date TEXT,
+  account_id INTEGER REFERENCES accounts(id),
+  color TEXT DEFAULT '#8b5cf6',
+  icon TEXT DEFAULT 'target',
+  note TEXT,
+  is_reached INTEGER DEFAULT 0,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS goal_contributions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  goal_id INTEGER NOT NULL REFERENCES goals(id) ON DELETE CASCADE,
+  amount REAL NOT NULL,
+  date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  note TEXT
+);

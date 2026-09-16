@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient: Deep Midnight Obsidian to Navy Slate -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090E17" />
+      <stop offset="60%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#192438" />
+    </linearGradient>
+
+    <!-- Crisp Subtle Border Highlight -->
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.7" />
+      <stop offset="40%" stop-color="#10B981" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0.15" />
+    </linearGradient>
+
+    <!-- Ascending Vector Gradient: Emerald to Cyan to Sky Blue -->
+    <linearGradient id="emblem-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="35%" stop-color="#10B981" />
+      <stop offset="70%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+
+    <!-- 'L' Monogram Stem Gradient -->
+    <linearGradient id="stem-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+
+    <!-- Clip Path ensuring absolutely nothing bleeds outside the squircle -->
+    <clipPath id="squircle-clip">
+      <rect x="32" y="32" width="448" height="448" rx="104" ry="104" />
+    </clipPath>
+  </defs>
+
+  <!-- Clean, Razor-Sharp Squircle Body (No drop shadows that cause box borders) -->
+  <rect x="32" y="32" width="448" height="448" rx="104" ry="104" fill="url(#bg-grad)" />
+
+  <!-- Content Group clipped strictly inside the squircle boundary -->
+  <g clip-path="url(#squircle-clip)">
+    <!-- Faint Technical Market Grid -->
+    <g opacity="0.08" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="8,8">
+      <line x1="80" y1="175" x2="432" y2="175" />
+      <line x1="80" y1="260" x2="432" y2="260" />
+      <line x1="80" y1="345" x2="432" y2="345" />
+    </g>
+
+    <!-- Soft Inner Radial Glow behind the peak arrow -->
+    <radialGradient id="peak-glow" cx="75%" cy="35%" r="35%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0" />
+    </radialGradient>
+    <rect x="32" y="32" width="448" height="448" fill="url(#peak-glow)" />
+
+    <!-- Stylized Monogram 'L' Ledger Base -->
+    <path d="M 124 150 C 124 138 134 128 146 128 C 158 128 168 138 168 150 L 168 326 C 168 344 182 358 200 358 L 358 358 C 370 358 380 368 380 380 C 380 392 370 402 358 402 L 180 402 C 149 402 124 377 124 346 Z" 
+          fill="url(#stem-grad)" />
+
+    <!-- Ascending Investment Growth Curve -->
+    <path d="M 180 330 L 246 250 C 252 243 262 243 268 249 L 306 283 C 312 289 322 288 328 281 L 388 194" 
+          fill="none" 
+          stroke="url(#emblem-grad)" 
+          stroke-width="30" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- Arrowhead Peak -->
+    <path d="M 344 180 L 398 180 C 404 180 409 185 409 191 L 409 245" 
+          fill="none" 
+          stroke="url(#emblem-grad)" 
+          stroke-width="30" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- Investment Star Node -->
+    <circle cx="396" cy="190" r="14" fill="#FFFFFF" />
+  </g>
+
+  <!-- Crisp 2px Edge Rim (Contained completely inside the boundary) -->
+  <rect x="33" y="33" width="446" height="446" rx="103" ry="103" fill="none" stroke="url(#border-grad)" stroke-width="2" />
+</svg>

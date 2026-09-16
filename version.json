@@ -1,0 +1,12 @@
+{
+  "version": "0.1.5",
+  "release_date": "2026-09-14",
+  "notes": "Universal Worldwide Currency & Custom Payment Methods: dynamic zero-decimal currency support (JPY/KRW), automatic number system adaptation (Lakhs for INR, Millions for USD/EUR/GBP), and customizable regional payment accounts (UPI, PhonePe, Apple Pay, PayPay, Pix, custom regional wallets).",
+  "tarball_url": "https://raw.githubusercontent.com/raizenquick/lyncost/main/dist-packages/lyncost-0.1.5-linux-x86_64.tar.gz",
+  "mobile_beta": {
+    "version": "0.2.1",
+    "release_date": "2026-09-13",
+    "apk_url": "https://raw.githubusercontent.com/raizenquick/lyncost/main/dist-packages/lyncost-mobile.apk",
+    "sha256": "e3d9eb154500569828644d960fbc69225f9c824c3d0d1a6fa9534e31f4437d05"
+  }
+}

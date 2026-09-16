@@ -1,0 +1,581 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 262.1 83.3% 57.8%; /* Royal Purple */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 262.1 83.3% 57.8%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 0.75rem;
+  }
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* =========================================================================
+   SIDEBAR: CLEAN BORDERLESS LIST (NO BORDERS, NO NEON ON NAV FEATURES)
+   ========================================================================= */
+aside nav button {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+/* =========================================================================
+   UNIVERSAL FORM CONTROLS: INPUTS, SELECTS, TEXTAREAS
+   Strictly prevents white text on white background in Dark Mode!
+   ========================================================================= */
+
+/* DAY MODE FORM CONTROLS */
+.theme-light input,
+.theme-light textarea,
+.theme-light select {
+  background-color: #ffffff !important;
+  color: #09090b !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.06), 0 0 6px rgba(147, 51, 234, 0.05) !important;
+  font-weight: 600 !important;
+}
+
+.theme-light select option {
+  background-color: #ffffff !important;
+  color: #09090b !important;
+}
+
+.theme-light input::placeholder,
+.theme-light textarea::placeholder {
+  color: #64748b !important;
+  font-weight: 400 !important;
+}
+
+.theme-light input:focus,
+.theme-light textarea:focus,
+.theme-light select:focus {
+  border-color: #7c3aed !important;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2) !important;
+  outline: none !important;
+}
+
+/* NIGHT MODE FORM CONTROLS - NEVER WHITE BACKGROUND */
+html.theme-dark,
+body.theme-dark,
+.theme-dark {
+  color-scheme: dark !important;
+}
+
+.theme-dark input,
+.theme-dark textarea {
+  background-color: #130f1e !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(168, 85, 247, 0.3) !important;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 6px rgba(147, 51, 234, 0.1) !important;
+  font-weight: 600 !important;
+}
+
+.theme-dark select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: #130f1e !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(168, 85, 247, 0.3) !important;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 6px rgba(147, 51, 234, 0.1) !important;
+  font-weight: 600 !important;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.75rem center !important;
+  background-size: 1rem !important;
+  padding-right: 2.25rem !important;
+  cursor: pointer !important;
+}
+
+.theme-dark select option,
+.theme-dark select optgroup {
+  background-color: #18181b !important;
+  color: #ffffff !important;
+}
+
+.theme-dark input[type="date"],
+.theme-dark input[type="datetime-local"],
+.theme-dark input[type="time"] {
+  color-scheme: dark !important;
+}
+
+.theme-dark input[type="checkbox"],
+.theme-dark input[type="radio"] {
+  accent-color: #a855f7 !important;
+}
+
+.theme-dark input::placeholder,
+.theme-dark textarea::placeholder {
+  color: #a1a1aa !important;
+  font-weight: 400 !important;
+}
+
+.theme-dark input:focus,
+.theme-dark textarea:focus,
+.theme-dark select:focus {
+  border-color: #a855f7 !important;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.35), 0 0 10px rgba(168, 85, 247, 0.25) !important;
+  outline: none !important;
+}
+
+
+/* =========================================================================
+   1. DAY THEME (LIGHT MODE)
+   - Neumorphic soft shadows with subtle low-density purple accent
+   - NO black elements in light mode (modal footers, cancel buttons, badges)
+   - Clear typography: Heads, titles, button names bold; body normal
+   ========================================================================= */
+
+html.theme-light,
+body.theme-light,
+.theme-light,
+.theme-light #root,
+.theme-light main {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Neumorphic Cards in Day Mode */
+.theme-light div[class*="rounded-2xl"],
+.theme-light div[class*="rounded-xl"]:not(aside nav button):not(button *),
+.theme-light section[class*="rounded-2xl"],
+.theme-light section[class*="rounded-xl"] {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(147, 51, 234, 0.12) !important;
+  box-shadow: 5px 5px 14px rgba(186, 195, 210, 0.35), -4px -4px 10px rgba(255, 255, 255, 0.9), 0 0 6px rgba(147, 51, 234, 0.05) !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-light div[class*="rounded-2xl"]:hover,
+.theme-light div[class*="rounded-xl"]:not(aside nav button):not(button *):hover {
+  border-color: rgba(147, 51, 234, 0.28) !important;
+  box-shadow: 6px 6px 18px rgba(186, 195, 210, 0.45), -5px -5px 14px rgba(255, 255, 255, 0.95), 0 0 10px rgba(147, 51, 234, 0.1) !important;
+}
+
+/* Sidebar in Day Mode */
+.theme-light aside {
+  background-color: #ffffff !important;
+  border-right: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 4px 0 16px rgba(186, 195, 210, 0.2) !important;
+}
+
+/* Active Nav Item in Day Mode (Clean Soft Neumorphic Pill) */
+.theme-light aside nav button[class*="bg-purple-"] {
+  background-color: #f3e8ff !important;
+  border: 1px solid rgba(147, 51, 234, 0.3) !important;
+  box-shadow: 2px 2px 6px rgba(147, 51, 234, 0.12) !important;
+}
+
+.theme-light aside nav button[class*="bg-purple-"] * {
+  color: #6b21a8 !important;
+  font-weight: 800 !important;
+}
+
+.theme-light aside nav button:not([class*="bg-purple-"]):hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* Action Buttons in Day Mode */
+.theme-light button.bg-rose-600,
+.theme-light button[class*="bg-rose-600"] {
+  background-color: #e11d48 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3) !important;
+  border: none !important;
+}
+
+.theme-light button.bg-rose-600 *,
+.theme-light button[class*="bg-rose-600"] * {
+  color: #ffffff !important;
+}
+
+.theme-light button.bg-emerald-600,
+.theme-light button[class*="bg-emerald-600"] {
+  background-color: #16a34a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3) !important;
+  border: none !important;
+}
+
+.theme-light button.bg-emerald-600 *,
+.theme-light button[class*="bg-emerald-600"] * {
+  color: #ffffff !important;
+}
+
+/* FIX BLACK ELEMENTS IN LIGHT MODE */
+.theme-light [class*="bg-zinc-900/95"],
+.theme-light [class*="bg-zinc-950"],
+.theme-light [class*="bg-zinc-900"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+.theme-light .fixed.inset-0 > div {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(147, 51, 234, 0.2) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), 0 0 15px rgba(147, 51, 234, 0.08) !important;
+}
+
+.theme-light button.bg-zinc-800,
+.theme-light button[class*="bg-zinc-800"],
+.theme-light [class*="bg-zinc-800"] {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.theme-light button.bg-zinc-800 *,
+.theme-light button[class*="bg-zinc-800"] * {
+  color: #0f172a !important;
+}
+
+.theme-light button.bg-zinc-800:hover,
+.theme-light button[class*="bg-zinc-800"]:hover {
+  background-color: #e2e8f0 !important;
+  color: #000000 !important;
+}
+
+.theme-light [class*="border-zinc-800"],
+.theme-light [class*="border-zinc-700"] {
+  border-color: #e2e8f0 !important;
+}
+
+/* Day Mode Tables */
+.theme-light thead,
+.theme-light thead tr,
+.theme-light thead th {
+  background-color: #f8fafc !important;
+  color: #09090b !important;
+  font-weight: 800 !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+}
+
+.theme-light tbody tr {
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+.theme-light tbody tr:hover {
+  background-color: #faf5ff !important;
+}
+
+.theme-light tbody td {
+  color: #1e293b !important;
+}
+
+/* Typography in Day Mode: EVERY TEXT MUST BE CRISP BLACK */
+.theme-light {
+  color: #09090b !important;
+}
+
+/* Any text-white or light text outside colored action buttons becomes pure black */
+.theme-light .text-white:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *):not(button[class*="bg-rose-"]):not(button[class*="bg-purple-"]):not(button[class*="bg-emerald-"]),
+.theme-light .text-zinc-100:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-zinc-200:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-zinc-300:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-slate-100:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-slate-200:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-slate-300:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-gray-100:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-gray-200:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *),
+.theme-light .text-gray-300:not(button[class*="bg-rose-"] *):not(button[class*="bg-purple-"] *):not(button[class*="bg-emerald-"] *) {
+  color: #09090b !important;
+}
+
+/* All headings, titles, card metric numbers in light mode are black */
+.theme-light h1,
+.theme-light h2,
+.theme-light h3,
+.theme-light h4,
+.theme-light h5,
+.theme-light h6,
+.theme-light th,
+.theme-light .font-black:not([class*="text-rose"]):not([class*="text-emerald"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-red"]):not(button *),
+.theme-light .font-extrabold:not([class*="text-rose"]):not([class*="text-emerald"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-red"]):not(button *),
+.theme-light .font-bold:not([class*="text-rose"]):not([class*="text-emerald"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-red"]):not(button *) {
+  color: #09090b !important;
+}
+
+.theme-light button,
+.theme-light select,
+.theme-light option,
+.theme-light nav button span {
+  font-weight: 700 !important;
+}
+
+/* All body text, spans, labels, and table cells in light mode are black/dark */
+.theme-light p:not([class*="text-rose"]):not([class*="text-emerald"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-red"]),
+.theme-light span:not([class*="text-rose"]):not([class*="text-emerald"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-red"]):not(button *),
+.theme-light label,
+.theme-light td:not([class*="text-rose"]):not([class*="text-emerald"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-red"]) {
+  color: #09090b !important;
+}
+
+/* Secondary labels and descriptions are clear dark slate */
+.theme-light .text-zinc-400,
+.theme-light .text-zinc-500,
+.theme-light .text-slate-400,
+.theme-light .text-slate-500 {
+  color: #475569 !important;
+}
+
+/* Royal Purple Buttons */
+.theme-light .bg-purple-600,
+.theme-light button.bg-purple-600 {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(192, 132, 252, 0.3) !important;
+  box-shadow: 3px 3px 10px rgba(109, 40, 217, 0.25), 0 0 8px rgba(124, 58, 237, 0.2) !important;
+}
+
+.theme-light button.bg-purple-600 *,
+.theme-light .bg-purple-600 * {
+  color: #ffffff !important;
+}
+
+.theme-light [class*="text-purple-"],
+.theme-light .text-purple-600,
+.theme-light .text-purple-700 {
+  color: #7c3aed !important;
+  font-weight: 800 !important;
+}
+
+.theme-light .text-emerald-400,
+.theme-light .text-emerald-500,
+.theme-light .text-emerald-600,
+.theme-light .text-emerald-700 {
+  color: #16a34a !important;
+  font-weight: 700 !important;
+}
+
+.theme-light .text-red-400,
+.theme-light .text-red-500,
+.theme-light .text-red-600,
+.theme-light .text-rose-400,
+.theme-light .text-rose-500,
+.theme-light .text-rose-600,
+.theme-light .text-rose-700 {
+  color: #dc2626 !important;
+  font-weight: 700 !important;
+}
+
+.theme-light .text-amber-400,
+.theme-light .text-amber-500,
+.theme-light .text-amber-600,
+.theme-light .text-amber-700 {
+  color: #d97706 !important;
+  font-weight: 700 !important;
+}
+
+/* Ensure no dark-mode badge backgrounds leak into light theme */
+.theme-light [class*="bg-emerald-950"]:not(.theme-dark *) {
+  background-color: #ffffff !important;
+}
+.theme-light [class*="bg-rose-950"]:not(.theme-dark *) {
+  background-color: #ffffff !important;
+}
+.theme-light [class*="bg-amber-950"]:not(.theme-dark *) {
+  background-color: #ffffff !important;
+}
+.theme-light [class*="bg-purple-950"]:not(.theme-dark *) {
+  background-color: #ffffff !important;
+}
+
+.theme-light [class*="fixed inset-0"] {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+
+/* =========================================================================
+   2. NIGHT THEME (DARK MODE)
+   - Dark Neumorphic depth with subtle small-density purple aura
+   - Pure dark form controls with white text (ZERO white bg on inputs!)
+   - Clear typography: Heads, titles, button names bold; body normal
+   ========================================================================= */
+
+html.theme-dark,
+body.theme-dark,
+.theme-dark,
+.theme-dark #root,
+.theme-dark main {
+  background-color: #06040a !important;
+  color: #f4f4f5 !important;
+}
+
+/* Dark Neumorphic Cards */
+.theme-dark [class*="rounded-2xl"],
+.theme-dark [class*="rounded-xl"]:not(aside nav button) {
+  background-color: #0d0a17 !important;
+  border: 1px solid rgba(168, 85, 247, 0.18) !important;
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.65), -3px -3px 10px rgba(35, 25, 55, 0.25), 0 0 8px rgba(147, 51, 234, 0.1) !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-dark [class*="rounded-2xl"]:hover,
+.theme-dark [class*="rounded-xl"]:not(aside nav button):hover {
+  border-color: rgba(192, 132, 252, 0.35) !important;
+  box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.75), -4px -4px 14px rgba(45, 30, 70, 0.35), 0 0 12px rgba(168, 85, 247, 0.2) !important;
+}
+
+/* Sidebar in Dark Mode */
+.theme-dark aside {
+  background-color: #09060f !important;
+  border-right: 1px solid rgba(39, 39, 42, 0.8) !important;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Active Nav Item in Dark Mode (Clean Soft Neumorphic Pill) */
+.theme-dark aside nav button[class*="bg-purple-"] {
+  background-color: rgba(76, 29, 149, 0.4) !important;
+  border: 1px solid rgba(168, 85, 247, 0.4) !important;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.theme-dark aside nav button[class*="bg-purple-"] * {
+  color: #e9d5ff !important;
+  font-weight: 800 !important;
+}
+
+.theme-dark aside nav button:not([class*="bg-purple-"]):hover {
+  background-color: rgba(39, 39, 42, 0.5) !important;
+}
+
+/* Dark Mode Modal Dialog */
+.theme-dark .fixed.inset-0 > div {
+  background-color: #0f0b1a !important;
+  border: 1px solid rgba(168, 85, 247, 0.25) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 16px rgba(147, 51, 234, 0.15) !important;
+}
+
+/* Dark Mode Tables */
+.theme-dark thead,
+.theme-dark thead tr,
+.theme-dark thead th {
+  background-color: #120e20 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-bottom: 1.5px solid rgba(168, 85, 247, 0.25) !important;
+}
+
+.theme-dark tbody tr {
+  border-bottom: 1px solid rgba(39, 39, 42, 0.6) !important;
+}
+
+.theme-dark tbody tr:hover {
+  background-color: rgba(46, 16, 101, 0.2) !important;
+}
+
+.theme-dark tbody td {
+  color: #e4e4e7 !important;
+}
+
+/* Typography in Dark Mode */
+.theme-dark h1,
+.theme-dark h2,
+.theme-dark h3,
+.theme-dark h4,
+.theme-dark th,
+.theme-dark .font-black,
+.theme-dark .font-extrabold {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+.theme-dark button,
+.theme-dark select,
+.theme-dark option,
+.theme-dark nav button span,
+.theme-dark .font-bold {
+  font-weight: 700 !important;
+}
+
+.theme-dark p,
+.theme-dark span,
+.theme-dark label,
+.theme-dark td {
+  color: #e4e4e7;
+}
+
+.theme-dark .text-zinc-400,
+.theme-dark .text-zinc-500 {
+  color: #a1a1aa !important;
+}
+
+/* Royal Purple Buttons */
+.theme-dark .bg-purple-600,
+.theme-dark button.bg-purple-600 {
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(216, 180, 254, 0.3) !important;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6), 0 0 10px rgba(124, 58, 237, 0.3) !important;
+}
+
+.theme-dark button.bg-purple-600 *,
+.theme-dark .bg-purple-600 * {
+  color: #ffffff !important;
+}
+
+.theme-dark [class*="text-purple-"],
+.theme-dark .text-purple-300,
+.theme-dark .text-purple-400 {
+  color: #c084fc !important;
+  font-weight: 800 !important;
+}
+
+.theme-dark .text-emerald-400,
+.theme-dark .text-emerald-500 {
+  color: #22c55e !important;
+  font-weight: 800 !important;
+}
+
+.theme-dark .text-red-400,
+.theme-dark .text-red-500,
+.theme-dark .text-rose-400 {
+  color: #ef4444 !important;
+  font-weight: 800 !important;
+}
+
+.theme-dark [class*="fixed inset-0"] {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8b5cf6 transparent;
+}
+
+

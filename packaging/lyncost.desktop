@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Lyncost
+GenericName=Personal Finance & Investment Tracker
+Comment=Fast, offline personal finance, bank, cash, and investment portfolio manager
+Exec=lyncost %U
+Icon=lyncost
+Terminal=false
+Type=Application
+Categories=Office;Finance;Utility;
+Keywords=finance;money;budget;investment;portfolio;bank;crypto;stocks;
+StartupWMClass=lyncost

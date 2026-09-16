@@ -1,0 +1,50 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Rust / Tauri
+src-tauri/target/
+target/
+
+# Database files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# Packaging & Dist output
+dist-packages/*
+!dist-packages/*.tar.gz
+!dist-packages/*.apk
+!dist-packages/SHA256SUMS
+packaging/*_staging/
+packaging/deb_build/
+packaging/*staging/
+packaging/*build/
+packaging/flatpak/build_dir/
+packaging/flatpak/repo_dir/
+node_modules
+.schema
